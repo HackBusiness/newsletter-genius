@@ -74,3 +74,50 @@
     @apply bg-background text-foreground;
   }
 }
+
+.retro-newsletter {
+  font-family: 'VT323', monospace;
+  background-color: #f0f0f0;
+  border: 2px solid #000;
+  box-shadow: 5px 5px 0px #000;
+}
+
+.retro-title {
+  font-size: 3rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 1rem;
+}
+
+.retro-heading {
+  font-size: 2rem;
+  border-bottom: 2px solid #000;
+  padding-bottom: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.retro-card {
+  border: 1px solid #000;
+  box-shadow: 3px 3px 0px #000;
+}
+
+.retro-text-box {
+  background-color: #e0e0e0;
+  border: 1px solid #000;
+  padding: 0.5rem;
+}
+
+.retro-link {
+  color: #0000FF;
+  text-decoration: underline;
+}
+
+.retro-link:hover {
+  color: #FF00FF;
+}
+
+.retro-footer {
+  font-style: italic;
+  border-top: 1px dashed #000;
+  padding-top: 1rem;
+}
