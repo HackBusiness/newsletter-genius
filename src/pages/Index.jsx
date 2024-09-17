@@ -1,19 +1,30 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { PersonaForm } from '../components/PersonaForm';
 import { ContentCuration } from '../components/ContentCuration';
-import { NewsletterPreview } from '../components/NewsletterPreview';
+import { RedditPostSelection } from '../components/RedditPostSelection';
+import { FinalNewsletter } from '../components/FinalNewsletter';
+import { Button } from '@/components/ui/button';
 
 const Index = () => {
-  const [persona, setPersona] = React.useState(null);
-  const [selectedContent, setSelectedContent] = React.useState([]);
+  const [persona, setPersona] = useState(null);
+  const [selectedArticles, setSelectedArticles] = useState([]);
+  const [selectedRedditPosts, setSelectedRedditPosts] = useState([]);
+  const [showFinalNewsletter, setShowFinalNewsletter] = useState(false);
 
   const handlePersonaSubmit = (personaData) => {
     setPersona(personaData);
-    // TODO: Implement API call to fetch curated content based on persona
   };
 
-  const handleContentSelection = (content) => {
-    setSelectedContent(content);
+  const handleArticleSelection = (articles) => {
+    setSelectedArticles(articles);
+  };
+
+  const handleRedditPostSelection = (posts) => {
+    setSelectedRedditPosts(posts);
+  };
+
+  const handleCreateNewsletter = () => {
+    setShowFinalNewsletter(true);
   };
 
   return (
@@ -22,13 +33,23 @@ const Index = () => {
       {!persona ? (
         <PersonaForm onSubmit={handlePersonaSubmit} />
       ) : (
-        <div className="flex flex-col md:flex-row md:space-x-8">
-          <div className="md:w-1/2">
-            <ContentCuration persona={persona} onContentSelect={handleContentSelection} />
+        <div className="space-y-8">
+          <div className="flex flex-col md:flex-row md:space-x-8">
+            <div className="md:w-1/2">
+              <ContentCuration persona={persona} onContentSelect={handleArticleSelection} />
+            </div>
+            <div className="md:w-1/2">
+              <RedditPostSelection onPostSelect={handleRedditPostSelection} />
+            </div>
           </div>
-          <div className="md:w-1/2 mt-8 md:mt-0">
-            <NewsletterPreview selectedContent={selectedContent} />
-          </div>
+          {selectedArticles.length > 0 && selectedRedditPosts.length > 0 && (
+            <Button onClick={handleCreateNewsletter} className="mt-4">
+              Create Final Newsletter
+            </Button>
+          )}
+          {showFinalNewsletter && (
+            <FinalNewsletter articles={selectedArticles} redditPosts={selectedRedditPosts} />
+          )}
         </div>
       )}
     </div>
