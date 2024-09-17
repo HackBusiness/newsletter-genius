@@ -34,6 +34,27 @@ export const FinalNewsletter = ({ articles, redditPosts }) => {
     setRedditComments(prev => ({ ...prev, [id]: newComment }));
   };
 
+  const renderTweet = (tweet) => (
+    <div className="tweet-embed">
+      <div className="tweet-header">
+        <img src={tweet.avatar} alt={tweet.name} className="tweet-avatar" />
+        <div className="tweet-name-container">
+          <span className="tweet-name">{tweet.name}</span>
+          <span className="tweet-username">@{tweet.username}</span>
+        </div>
+      </div>
+      <p className="tweet-content">{tweet.content}</p>
+      <div className="tweet-footer">
+        <span>{tweet.date}</span>
+        <div className="tweet-stats">
+          <span>{tweet.comments} Comments</span>
+          <span>{tweet.retweets} Retweets</span>
+          <span>{tweet.likes} Likes</span>
+        </div>
+      </div>
+    </div>
+  );
+
   return (
     <div className="mt-8">
       <h2 className="text-3xl font-bold mb-4">Your Custom Newsletter</h2>
@@ -57,6 +78,7 @@ export const FinalNewsletter = ({ articles, redditPosts }) => {
               <CardContent>
                 <p className="text-sm text-gray-500">Source: {article.source}</p>
                 <p className="mt-2 text-sm">{article.blurb}</p>
+                {article.tweet && renderTweet(article.tweet)}
                 <a href={article.link} target="_blank" rel="noopener noreferrer" className="text-sm text-blue-500 hover:underline mt-2 block retro-link">
                   Read full article
                 </a>
