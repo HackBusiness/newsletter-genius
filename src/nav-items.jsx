@@ -1,4 +1,4 @@
-import { HomeIcon, RedditIcon } from "lucide-react";
+import { HomeIcon, MessageSquareIcon } from "lucide-react";
 import Index from "./pages/Index.jsx";
 import RedditPosts from "./pages/RedditPosts.jsx";
 
@@ -15,7 +15,7 @@ export const navItems = [
   {
     title: "Reddit Posts",
     to: "/reddit-posts",
-    icon: <RedditIcon className="h-4 w-4" />,
+    icon: <MessageSquareIcon className="h-4 w-4" />,
     page: <RedditPosts />,
   },
 ];
