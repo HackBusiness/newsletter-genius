@@ -11,9 +11,24 @@ export const ContentCuration = ({ persona, onContentSelect }) => {
     // TODO: Implement API call to fetch curated content based on persona
     // For now, we'll use dummy data
     setCuratedContent([
-      { id: 1, title: 'Top 10 Accounting Trends for 2024', source: 'AccountingToday' },
-      { id: 2, title: 'New Tax Laws Affecting Small Businesses', source: 'Forbes' },
-      { id: 3, title: 'How AI is Transforming the Accounting Industry', source: 'TechCrunch' },
+      { 
+        id: 1, 
+        title: 'Top 10 Accounting Trends for 2024', 
+        source: 'AccountingToday',
+        blurb: 'Discover the latest trends shaping the accounting industry, from AI-driven automation to blockchain integration.'
+      },
+      { 
+        id: 2, 
+        title: 'New Tax Laws Affecting Small Businesses', 
+        source: 'Forbes',
+        blurb: 'Learn about recent changes in tax legislation and how they impact small business owners and entrepreneurs.'
+      },
+      { 
+        id: 3, 
+        title: 'How AI is Transforming the Accounting Industry', 
+        source: 'TechCrunch',
+        blurb: 'Explore the ways artificial intelligence is revolutionizing accounting practices, improving efficiency and accuracy.'
+      },
     ]);
   }, [persona]);
 
@@ -47,6 +62,7 @@ export const ContentCuration = ({ persona, onContentSelect }) => {
           </CardHeader>
           <CardContent>
             <p className="text-sm text-gray-500">Source: {item.source}</p>
+            <p className="mt-2 text-sm">{item.blurb}</p>
           </CardContent>
         </Card>
       ))}

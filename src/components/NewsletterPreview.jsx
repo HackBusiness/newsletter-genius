@@ -3,9 +3,15 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 
 export const NewsletterPreview = ({ selectedContent }) => {
+  const [generatedNewsletter, setGeneratedNewsletter] = React.useState(null);
+
   const handleGenerateNewsletter = () => {
-    // TODO: Implement newsletter generation logic
-    console.log('Generating newsletter with selected content:', selectedContent);
+    // TODO: Implement actual newsletter generation logic with GPT
+    const dummyNewsletter = selectedContent.map(item => ({
+      ...item,
+      summary: `This is a generated summary for "${item.title}". It would typically be created by GPT based on the full article content.`
+    }));
+    setGeneratedNewsletter(dummyNewsletter);
   };
 
   return (
@@ -18,11 +24,29 @@ export const NewsletterPreview = ({ selectedContent }) => {
           </CardHeader>
           <CardContent>
             <p className="text-sm text-gray-500">Source: {item.source}</p>
-            {/* TODO: Add summarized content here */}
+            <p className="mt-2 text-sm">{item.blurb}</p>
           </CardContent>
         </Card>
       ))}
       <Button onClick={handleGenerateNewsletter}>Generate Newsletter</Button>
+      
+      {generatedNewsletter && (
+        <div className="mt-8">
+          <h3 className="text-xl font-bold mb-4">Generated Newsletter</h3>
+          {generatedNewsletter.map((item) => (
+            <Card key={item.id} className="mb-4">
+              <CardHeader>
+                <CardTitle>{item.title}</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-sm text-gray-500">Source: {item.source}</p>
+                <p className="mt-2 text-sm font-semibold">Summary:</p>
+                <p className="mt-1 text-sm">{item.summary}</p>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+      )}
     </div>
   );
 };
