@@ -25,6 +25,9 @@ export const NewsletterPreview = ({ selectedContent }) => {
           <CardContent>
             <p className="text-sm text-gray-500">Source: {item.source}</p>
             <p className="mt-2 text-sm">{item.blurb}</p>
+            <a href={item.link} target="_blank" rel="noopener noreferrer" className="text-sm text-blue-500 hover:underline mt-2 block">
+              Read full article
+            </a>
           </CardContent>
         </Card>
       ))}
@@ -42,6 +45,9 @@ export const NewsletterPreview = ({ selectedContent }) => {
                 <p className="text-sm text-gray-500">Source: {item.source}</p>
                 <p className="mt-2 text-sm font-semibold">Summary:</p>
                 <p className="mt-1 text-sm">{item.summary}</p>
+                <a href={item.link} target="_blank" rel="noopener noreferrer" className="text-sm text-blue-500 hover:underline mt-2 block">
+                  Read full article
+                </a>
               </CardContent>
             </Card>
           ))}

@@ -22,10 +22,14 @@ const Index = () => {
       {!persona ? (
         <PersonaForm onSubmit={handlePersonaSubmit} />
       ) : (
-        <>
-          <ContentCuration persona={persona} onContentSelect={handleContentSelection} />
-          <NewsletterPreview selectedContent={selectedContent} />
-        </>
+        <div className="flex flex-col md:flex-row md:space-x-8">
+          <div className="md:w-1/2">
+            <ContentCuration persona={persona} onContentSelect={handleContentSelection} />
+          </div>
+          <div className="md:w-1/2 mt-8 md:mt-0">
+            <NewsletterPreview selectedContent={selectedContent} />
+          </div>
+        </div>
       )}
     </div>
   );

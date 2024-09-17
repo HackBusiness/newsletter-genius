@@ -15,19 +15,22 @@ export const ContentCuration = ({ persona, onContentSelect }) => {
         id: 1, 
         title: 'Top 10 Accounting Trends for 2024', 
         source: 'AccountingToday',
-        blurb: 'Discover the latest trends shaping the accounting industry, from AI-driven automation to blockchain integration.'
+        blurb: 'Discover the latest trends shaping the accounting industry, from AI-driven automation to blockchain integration.',
+        link: 'https://www.accountingtoday.com/list/top-10-accounting-trends-for-2024'
       },
       { 
         id: 2, 
         title: 'New Tax Laws Affecting Small Businesses', 
         source: 'Forbes',
-        blurb: 'Learn about recent changes in tax legislation and how they impact small business owners and entrepreneurs.'
+        blurb: 'Learn about recent changes in tax legislation and how they impact small business owners and entrepreneurs.',
+        link: 'https://www.forbes.com/sites/forbesfinancecouncil/2023/12/15/new-tax-laws-affecting-small-businesses/'
       },
       { 
         id: 3, 
         title: 'How AI is Transforming the Accounting Industry', 
         source: 'TechCrunch',
-        blurb: 'Explore the ways artificial intelligence is revolutionizing accounting practices, improving efficiency and accuracy.'
+        blurb: 'Explore the ways artificial intelligence is revolutionizing accounting practices, improving efficiency and accuracy.',
+        link: 'https://techcrunch.com/2023/11/30/how-ai-is-transforming-the-accounting-industry/'
       },
     ]);
   }, [persona]);
@@ -63,6 +66,9 @@ export const ContentCuration = ({ persona, onContentSelect }) => {
           <CardContent>
             <p className="text-sm text-gray-500">Source: {item.source}</p>
             <p className="mt-2 text-sm">{item.blurb}</p>
+            <a href={item.link} target="_blank" rel="noopener noreferrer" className="text-sm text-blue-500 hover:underline mt-2 block">
+              Read full article
+            </a>
           </CardContent>
         </Card>
       ))}
