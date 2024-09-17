@@ -4,6 +4,7 @@ import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Checkbox } from '@/components/ui/checkbox';
+import NewsletterDisplay from '../components/NewsletterDisplay';
 
 const fetchRedditPosts = async (subreddit) => {
   const response = await fetch(`https://www.reddit.com/r/${subreddit}/top.json?limit=10`);
@@ -17,6 +18,7 @@ const fetchRedditPosts = async (subreddit) => {
 const RedditPosts = () => {
   const [subreddit, setSubreddit] = useState('');
   const [selectedPosts, setSelectedPosts] = useState([]);
+  const [newsletter, setNewsletter] = useState(null);
 
   const { data: posts, isLoading, isError, refetch } = useQuery({
     queryKey: ['redditPosts', subreddit],
@@ -37,8 +39,7 @@ const RedditPosts = () => {
 
   const handleCreateNewsletter = () => {
     const selectedPostsData = posts.filter(post => selectedPosts.includes(post.id));
-    console.log('Selected posts for newsletter:', selectedPostsData);
-    // TODO: Implement newsletter creation logic
+    setNewsletter(selectedPostsData);
   };
 
   return (
@@ -93,6 +94,8 @@ const RedditPosts = () => {
           Create Newsletter from Selected Posts
         </Button>
       )}
+
+      {newsletter && <NewsletterDisplay posts={newsletter} />}
     </div>
   );
 };
